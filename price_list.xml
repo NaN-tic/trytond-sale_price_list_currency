@@ -8,5 +8,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="product_price_list.price_list_view_form"/>
             <field name="name">price_list_form</field>
         </record>
+
+        <record model="ir.ui.view" id="price_list_view_tree">
+            <field name="model">product.price_list</field>
+            <field name="inherit" ref="product_price_list.price_list_view_tree"/>
+            <field name="name">price_list_tree</field>
+        </record>
     </data>
 </tryton>
