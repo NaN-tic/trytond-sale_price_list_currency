@@ -8,8 +8,7 @@ from trytond.transaction import Transaction
 __all__ = ['PriceList']
 
 
-class PriceList:
-    __metaclass__ = PoolMeta
+class PriceList(metaclass=PoolMeta):
     __name__ = 'product.price_list'
     currency = fields.Many2One('currency.currency', 'Currency')
 
