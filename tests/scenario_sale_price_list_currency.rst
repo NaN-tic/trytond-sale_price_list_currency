@@ -58,11 +58,8 @@ Create product::
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
-    >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
     >>> template.save()
     >>> product, = template.products
 
@@ -72,8 +69,6 @@ Create product::
     >>> template.type = 'service'
     >>> template.salable = True
     >>> template.list_price = Decimal('30')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
     >>> template.save()
     >>> service, = template.products
 
