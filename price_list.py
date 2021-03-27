@@ -5,8 +5,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
 from trytond.transaction import Transaction
 
-__all__ = ['PriceList']
-
 
 class PriceList(metaclass=PoolMeta):
     __name__ = 'product.price_list'
