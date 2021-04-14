@@ -117,7 +117,7 @@ Create a sale and customer::
     >>> sale_line.product = product
     >>> sale_line.quantity = 1.0
     >>> sale_line.unit_price
-    Decimal('10.0000')
+    Decimal('20.0000')
     >>> sale.save()
 
 Create a sale and customer2::
