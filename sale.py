@@ -25,6 +25,8 @@ class Line(metaclass=PoolMeta):
         if self.sale:
             # sale_price_list module add price_list in the context
             # In case price_list has currency, set currency from the context to None
+            # This will make that the core module will not try to convert the price
+            # from the price list from company currency to price list currency.
             if getattr(self.sale, 'price_list', None):
                 if self.sale.price_list.currency:
                     context['currency'] = None
