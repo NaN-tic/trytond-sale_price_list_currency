@@ -14,3 +14,18 @@ class Sale(metaclass=PoolMeta):
             return self.price_list.currency.id
         elif self.company:
             return self.company.currency.id
+
+
+class Line(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    @fields.depends('sale', '_parent_sale.price_list')
+    def _get_context_sale_price(self):
+        context = super()._get_context_sale_price()
+        if self.sale:
+            # sale_price_list module add price_list in the context
+            # In case price_list has currency, set currency from the context to None
+            if getattr(self.sale, 'price_list', None):
+                if self.sale.price_list.currency:
+                    context['currency'] = None
+        return context

@@ -9,4 +9,5 @@ def register():
     Pool.register(
         price_list.PriceList,
         sale.Sale,
+        sale.Line,
         module='sale_price_list_currency', type_='model')
