@@ -170,3 +170,21 @@ Create a sales without price list and apply currency rate::
     >>> sale_line.quantity = 1.0
     >>> sale_line.unit_price == Decimal('10.0000')
     True
+
+Create a sales with price list currency diferent sale currency and company currency::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.price_list == price_list
+    True
+    >>> sale.currency == euro
+    True
+    >>> sale.currency = usd
+    >>> sale.price_list.currency != sale.currency
+    True
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale_line.unit_price == Decimal('6.6667')
+    True
