@@ -15,6 +15,7 @@ Imports::
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
+    >>> today = datetime.date.today()
 
 Install sale_price_list::
 
@@ -82,6 +83,15 @@ Create currencies::
     >>> euro = get_currency(code='EUR')
     >>> usd = get_currency(code='USD')
 
+Create currency rate::
+
+    >>> CurrencyRate = Model.get('currency.currency.rate')
+    >>> currency_rate = CurrencyRate()
+    >>> currency_rate.date = today
+    >>> currency_rate.rate = Decimal(1.5)
+    >>> currency_rate.currency = euro # company has usd currency
+    >>> currency_rate.save()
+
 Create a price List and assign it to customer::
 
     >>> PriceList = Model.get('product.price_list')
@@ -117,7 +127,7 @@ Create a sale and customer::
     >>> sale_line.product = product
     >>> sale_line.quantity = 1.0
     >>> sale_line.unit_price
-    Decimal('20.0000')
+    Decimal('10.0000')
     >>> sale.save()
 
 Create a sale and customer2::
@@ -136,3 +146,45 @@ Create a sale and customer2::
     >>> sale_line.unit_price
     Decimal('8.5000')
     >>> sale.save()
+
+Create a sales without price list and apply currency rate::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.price_list = None
+    >>> sale.currency = euro
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale_line.unit_price == Decimal('15.0000')
+    True
+
+    >>> sale = Sale()
+    >>> sale.party = customer2
+    >>> sale.price_list = None
+    >>> sale.currency = usd
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale_line.unit_price == Decimal('10.0000')
+    True
+
+Create a sales with price list currency diferent sale currency and company currency::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.price_list == price_list
+    True
+    >>> sale.currency == euro
+    True
+    >>> sale.currency = usd
+    >>> sale.price_list.currency != sale.currency
+    True
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale_line.unit_price == Decimal('6.6667')
+    True
