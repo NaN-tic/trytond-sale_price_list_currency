@@ -47,7 +47,8 @@ class Line(metaclass=PoolMeta):
         currency_price_list = self.sale and self.sale.price_list and self.sale.price_list.currency
         currency_sale = self.currency
 
-        if currency_price_list and (currency_price_list != currency_sale):
+        if (currency_price_list and currency_sale
+                and (currency_price_list != currency_sale)):
             date = Transaction().context.get('sale_date') or today
             with Transaction().set_context(date=date):
                 new_unit_price = Currency.compute(
