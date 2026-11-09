@@ -1,0 +1,21 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:product.price_list,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "help:product.price_list,currency:"
+msgid ""
+"If a currency different from the company's is specified, the price will be "
+"based on the price list, and the exchange rate of the currency will not be "
+"applied."
+msgstr ""
+"Ha a vállalatétól eltérő pénznem van megadva, az ár az árlistán alapul, és a"
+" pénznem árfolyama nem kerül alkalmazásra."
