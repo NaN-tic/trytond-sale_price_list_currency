@@ -1,0 +1,21 @@
+#
+msgid ""
+msgstr ""
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:product.price_list,currency:"
+msgid "Currency"
+msgstr "រូបិយប័ណ្ណ"
+
+msgctxt "help:product.price_list,currency:"
+msgid ""
+"If a currency different from the company's is specified, the price will be "
+"based on the price list, and the exchange rate of the currency will not be "
+"applied."
+msgstr ""
+"បើកំណត់រូបិយប័ណ្ណខុសពីរូបិយប័ណ្ណរបស់ក្រុមហ៊ុន តម្លៃនឹងផ្អែកលើតារាងតម្លៃ "
+"ហើយប្រព័ន្ធនឹងមិនអនុវត្តអត្រាប្តូរប្រាក់ទេ។"
